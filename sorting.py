@@ -21,13 +21,17 @@ def read_data(file_name):
     return final_dict
 
 
-def selection_sort(number_list: list):
+def selection_sort(number_list: list, direction):
 
     for i in range(len(number_list)):
         min_index = i
         for j in range(i + 1, len(number_list)):
-            if number_list[j] < number_list[min_index]:
-                min_index = j
+            if direction == "ascending":
+                if number_list[j] < number_list[min_index]:
+                    min_index = j
+            elif direction == "descending":
+                if number_list[j] > number_list[min_index]:
+                    min_index = j
 
         number_list[i], number_list[min_index] = number_list[min_index], number_list[i]
 
@@ -35,7 +39,7 @@ def selection_sort(number_list: list):
 
 
 def main():
-    selection_sort([5, 56, 38, 94, 3, 18])
+    print(selection_sort([88, 1, 1058, 36, 8, 998, 21, 7, 1235], "descending"))
 
 
 if __name__ == '__main__':
