@@ -21,7 +21,7 @@ def read_data(file_name):
     return final_dict
 
 
-def selection_sort(number_list: list, direction):
+def selection_sort(number_list: list, direction) -> list:
 
     for i in range(len(number_list)):
         min_index = i
@@ -38,8 +38,36 @@ def selection_sort(number_list: list, direction):
     return number_list
 
 
+def bubble_sort(number_list: list) -> list:
+
+    for i in range(len(number_list) - 1):
+        swapped = False
+        for j in range(0, len(number_list) - 1 - i):
+            if number_list[j] > number_list[j + 1]:
+                temporary_number = number_list[j]
+                number_list[j] = number_list[j + 1]
+                number_list[j + 1] = temporary_number
+                swapped = True
+        if not swapped:
+            break
+
+    return number_list
+
+def insertion_sort(number_list: list) -> list:
+    for i in range(1, len(number_list)):
+        key = number_list[i]
+        j = i - 1
+
+        while j >= 0 and key < number_list[j]:
+            number_list[j + 1] = number_list[j]
+            j -= 1
+
+        number_list[j + 1] = key
+    return number_list
+
+
 def main():
-    print(selection_sort([88, 1, 1058, 36, 8, 998, 21, 7, 1235], "descending"))
+    print(insertion_sort([88, 1, 1058, 1, 36, 8, 998, 21, 7, 1235]))
 
 
 if __name__ == '__main__':
